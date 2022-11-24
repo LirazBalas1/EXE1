@@ -1,7 +1,7 @@
 #include "NumClass.h"
-#include<math.h>
+#include <math.h>
 float CheckArmstrong(int x, int size);
-int checkPalindrome(int num);
+int checkPalindrome(int num, int temp);
 
 int isArmstrong(int num)
 {
@@ -28,22 +28,19 @@ float CheckArmstrong(int x, int size)
 
 int isPalindrome(int number)
 {
-    if (number == checkPalindrome(number))
+    if (number == checkPalindrome(number, 0))
     {
         return 1;
     }
     return 0;
 }
 // recursive method
-int checkPalindrome(int num)
+int checkPalindrome(int n, int temp)
 {
-    int p;
-    static int sum = 0;
-    if (num != 0)
+    if (n == 0)
     {
-        p = num % 10;
-        sum = sum * 10 + p;
-        checkPalindrome(num / 10);
+        return temp;
     }
-    return sum;
+    temp = (temp * 10) + (n % 10);
+    return checkPalindrome(n / 10, temp);
 }
